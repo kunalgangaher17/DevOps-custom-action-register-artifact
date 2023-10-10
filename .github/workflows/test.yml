@@ -115,7 +115,7 @@ jobs:
       #     package-name: 'registerpackage.war'
 
       - name: ServiceNow Register Artifact
-        uses: ServiceNow/servicenow-devops-register-artifact@v2.0.0
+        uses: kunalgangaher17/DevOps-custom-action-register-artifact@main
         with:
           devops-integration-token: ${{ secrets.SN_DEVOPS_INTEGRATION_TOKEN }}
           instance-url: ${{ secrets.SN_INSTANCE_URL }}
