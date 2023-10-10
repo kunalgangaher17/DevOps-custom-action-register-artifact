@@ -78,7 +78,9 @@ const axios = require('axios');
             };
 
             httpHeaders = { headers: defaultHeadersForBasicAuth };
+            console.log("Before sending an api call for register artifact :"+JSON.stringify(payload));
             snowResponse = await axios.post(endpoint, JSON.stringify(payload), httpHeaders);
+            console.log("After getting an api call response for register artifact :"+JSON.stringify(snowResponse));
         }
         else {
             core.setFailed("For Basic Auth, Username and Password is mandatory for integration user authentication");
