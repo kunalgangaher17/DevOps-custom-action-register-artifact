@@ -28,7 +28,7 @@ jobs:
 
     
   changeApproval:
-    name: ServiceNow Change Approval
+    name: ServiceNow Register Artifact
     # needs: build
     runs-on: ubuntu-latest
 
