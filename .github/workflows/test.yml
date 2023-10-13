@@ -26,8 +26,8 @@ jobs:
 
     
   debug:
-    name: ServiceNow Security scan
-    # needs: build
+    # name: ServiceNow Security scan
+    # # needs: build
     runs-on: ubuntu-latest
 
     env:
