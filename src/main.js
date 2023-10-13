@@ -42,6 +42,7 @@ const axios = require('axios');
             'branchName': `${githubContext.ref_name}`
         };
         console.log("paylaod to register artifact: " + JSON.stringify(payload));
+        console.debug("Debug log for register artifact");
     } catch (e) {
         core.setFailed(`Exception setting the payload to register artifact ${e}`);
         return;
