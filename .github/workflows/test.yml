@@ -72,16 +72,16 @@ jobs:
       #     job-name: 'Build'
       #     xml-report-filename: target/surefire-reports/testng-results.xml
 
-      - name: ServiceNow DevOps Security Results
-        uses: ServiceNow/servicenow-devops-security-result@v2.0.0
-        with:
-          devops-integration-user-name: ${{ secrets.SN_DEVOPS_USER }}
-          devops-integration-user-password: ${{ secrets.SN_DEVOPS_PASSWORD }}
-          instance-url: ${{ secrets.SN_INSTANCE_URL }}
-          tool-id: b414fba78769b5104a4577b8cebb3514
-          context-github: ${{ toJSON(github) }}
-          job-name: Deploy
-          security-result-attributes:  '{"scanner":"Veracode","applicationName":"azure","buildVersion":"jenkins-Veracode with Step-27"}'
+      # - name: ServiceNow DevOps Security Results
+      #   uses: ServiceNow/servicenow-devops-security-result@v2.0.0
+      #   with:
+      #     devops-integration-user-name: ${{ secrets.SN_DEVOPS_USER }}
+      #     devops-integration-user-password: ${{ secrets.SN_DEVOPS_PASSWORD }}
+      #     instance-url: ${{ secrets.SN_INSTANCE_URL }}
+      #     tool-id: b414fba78769b5104a4577b8cebb3514
+      #     context-github: ${{ toJSON(github) }}
+      #     job-name: Deploy
+      #     security-result-attributes:  '{"scanner":"Veracode","applicationName":"azure","buildVersion":"jenkins-Veracode with Step-27"}'
 
       # - name: ServiceNow Update Change
       #   uses: ServiceNow/servicenow-devops-update-change@v2.0.0
@@ -114,15 +114,15 @@ jobs:
       #     artifacts: '[{"name": "com:customactiondemo","version": "1.${{ github.run_number }}","semanticVersion": "1.${{ github.run_number }}.0","repositoryName": "${{ github.repository }}"}]'
       #     package-name: 'registerpackage.war'
 
-      # - name: ServiceNow Register Artifact
-      #   uses: kunalgangaher17/DevOps-custom-action-register-artifact@main
-      #   with:
-      #     devops-integration-token: kLLwRg33c37hcceKJYJjMXRCR3ywkwR5
-      #     instance-url: ${{ secrets.SN_INSTANCE_URL }}
-      #     tool-id: ${{ secrets.SN_ORCHESTRATION_TOOL_ID }}
-      #     context-github: ${{ toJSON(github) }}
-      #     job-name: 'ServiceNow Register Artifact'
-      #     artifacts: '[{"name": "com:customactiondemo","version": "1.${{ github.run_number }}","semanticVersion": "1.${{ github.run_number }}.0","repositoryName": "${{ github.repository }}"}]'
+      - name: ServiceNow Register Artifact
+        uses: kunalgangaher17/DevOps-custom-action-register-artifact@main
+        with:
+          devops-integration-token: kLLwRg33c37hcceKJYJjMXRCR3ywkwR5
+          instance-url: ${{ secrets.SN_INSTANCE_URL }}
+          tool-id: ${{ secrets.SN_ORCHESTRATION_TOOL_ID }}
+          context-github: ${{ toJSON(github) }}
+          job-name: 'ServiceNow Register Artifact'
+          artifacts: '[{"name": "com:customactiondemo","version": "1.${{ github.run_number }}","semanticVersion": "1.${{ github.run_number }}.0","repositoryName": "${{ github.repository }}"}]'
           
   deploy:
     name: Deploy
