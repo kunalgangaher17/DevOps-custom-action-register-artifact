@@ -30,6 +30,9 @@ jobs:
     # needs: build
     runs-on: ubuntu-latest
 
+    env:
+      ACTIONS_STEP_DEBUG: true
+
     steps:     
       # - name: ServiceNow Change Approval
       #   uses: ServiceNow/servicenow-devops-change@v2.0.0
