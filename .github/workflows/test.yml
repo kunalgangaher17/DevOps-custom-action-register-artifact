@@ -34,6 +34,10 @@ jobs:
       ACTIONS_STEP_DEBUG: true
 
     steps:     
+      - name: Debug Step
+        run: |
+          echo "This is a debug message"      
+      
       # - name: ServiceNow Change Approval
       #   uses: ServiceNow/servicenow-devops-change@v2.0.0
       #   with:
