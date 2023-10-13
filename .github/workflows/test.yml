@@ -25,18 +25,18 @@ jobs:
   #     run: npm run build
 
     
-  debug:
-    # name: ServiceNow Security scan
-    # # needs: build
+  changeApproval:
+    name: ServiceNow Security scan
+    # needs: build
     runs-on: ubuntu-latest
 
-    env:
-      ACTIONS_STEP_DEBUG: false
+    # env:
+    #   ACTIONS_STEP_DEBUG: false
 
     steps:     
-      - name: Debug Step
-        run: |
-          echo "This is a debug message"      
+      # - name: Debug Step
+      #   run: |
+      #     echo "This is a debug message"      
       
       # - name: ServiceNow Change Approval
       #   uses: ServiceNow/servicenow-devops-change@v2.0.0
