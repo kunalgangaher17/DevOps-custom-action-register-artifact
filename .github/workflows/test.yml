@@ -5,13 +5,7 @@ on:
   workflow_dispatch:
     
 
-jobs:
-  debug:
-    runs-on: ubuntu-latest
-
-    env:
-      ACTIONS_STEP_DEBUG: true
-      
+jobs:      
   # build:
   #   name: Build
      
