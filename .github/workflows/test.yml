@@ -125,11 +125,11 @@ jobs:
           job-name: 'ServiceNow Register Artifact'
           artifacts: '[{"name": "com:customactiondemo","version": "1.${{ github.run_number }}","semanticVersion": "1.${{ github.run_number }}.0","repositoryName": "${{ github.repository }}"}]'
           
-  deploy:
-    name: Deploy
-    needs: changeApproval
-    runs-on: ubuntu-latest
+  # deploy:
+  #   name: Deploy
+  #   needs: changeApproval
+  #   runs-on: ubuntu-latest
 
-    steps:     
-      - name: Run Deployment Script
-        run: echo "Deployment Finished....."
+  #   steps:     
+  #     - name: Run Deployment Script
+  #       run: echo "Deployment Finished....."
