@@ -5,12 +5,10 @@ on:
   workflow_dispatch:
     
 
-jobs:
-
+jobs:      
   # build:
   #   name: Build
-  #   runs-on: ubuntu-latest
-  
+     
   #   steps:
   #   - name: Checkout
   #     uses: actions/checkout@v2
@@ -32,7 +30,14 @@ jobs:
     # needs: build
     runs-on: ubuntu-latest
 
+    # env:
+    #   ACTIONS_STEP_DEBUG: false
+
     steps:     
+      # - name: Debug Step
+      #   run: |
+      #     echo "This is a debug message"      
+      
       # - name: ServiceNow Change Approval
       #   uses: ServiceNow/servicenow-devops-change@v2.0.0
       #   with:
@@ -103,16 +108,16 @@ jobs:
       #     context-github: ${{ toJSON(github) }}
       #     change-details: '{"build_number":"21","pipeline_name":"CI_Pipeline","stage_name":"Create_Change"}'
 
-      # - name: ServiceNow Register Package
-      #   uses: ServiceNow/servicenow-devops-register-package@v2.0.0
-      #   with:
-      #     devops-integration-token: ${{ secrets.SN_DEVOPS_INTEGRATION_TOKEN }}
-      #     instance-url: ${{ secrets.SN_INSTANCE_URL }}
-      #     tool-id: ${{ secrets.SN_ORCHESTRATION_TOOL_ID }}
-      #     context-github: ${{ toJSON(github) }}
-      #     job-name: 'Register Package'
-      #     artifacts: '[{"name": "com:customactiondemo","version": "1.${{ github.run_number }}","semanticVersion": "1.${{ github.run_number }}.0","repositoryName": "${{ github.repository }}"}]'
-      #     package-name: 'registerpackage.war'
+      - name: ServiceNow Register Package
+        uses: ServiceNow/servicenow-devops-register-package@v2.0.0
+        with:
+          devops-integration-token: ${{ secrets.SN_DEVOPS_INTEGRATION_TOKEN }}
+          instance-url: ${{ secrets.SN_INSTANCE_URL }}
+          tool-id: ${{ secrets.SN_ORCHESTRATION_TOOL_ID }}
+          context-github: ${{ toJSON(github) }}
+          job-name: 'Register Package'
+          artifacts: '[{"name": "com:customactiondemo","version": "1.${{ github.run_number }}","semanticVersion": "1.${{ github.run_number }}.0","repositoryName": "${{ github.repository }}"}]'
+          package-name: 'registerpackage.war'
 
       - name: ServiceNow Register Artifact
         uses: kunalgangaher17/DevOps-custom-action-register-artifact@main
@@ -124,11 +129,11 @@ jobs:
           job-name: 'ServiceNow Register Artifact'
           artifacts: '[{"name": "com:customactiondemo","version": "1.${{ github.run_number }}","semanticVersion": "1.${{ github.run_number }}.0","repositoryName": "${{ github.repository }}"}]'
           
-  deploy:
-    name: Deploy
-    needs: changeApproval
-    runs-on: ubuntu-latest
+  # deploy:
+  #   name: Deploy
+  #   needs: changeApproval
+  #   runs-on: ubuntu-latest
 
-    steps:     
-      - name: Run Deployment Script
-        run: echo "Deployment Finished....."
+  #   steps:     
+  #     - name: Run Deployment Script
+  #       run: echo "Deployment Finished....."
