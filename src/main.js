@@ -87,9 +87,8 @@ const axios = require('axios');
         } else if (e.message.includes('401')) {
             core.setFailed('Invalid Credentials. Please correct the credentials and try again.');
         } else {
-            core.setFailed('ServiceNow Artifact Versions are NOT created. Please check ServiceNow logs for more details.:- '+e.message);
-            core.setFailed('ServiceNow Artifact Versions are NOT created. Please check ServiceNow logs for more details. Print without stringify:- '+e);
-            core.setFailed('ServiceNow Artifact Versions are NOT created. Please check ServiceNow logs for more details. Print with stringify:- '+JSON.stringify(e));
+            core.setFailed('ServiceNow Artifact Versions are NOT created. Please check ServiceNow logs for more details.');
+            core.setFailed('[ServiceNow DevOps] Register Artifact. Error log :'+e.message);
         }
     }
     
