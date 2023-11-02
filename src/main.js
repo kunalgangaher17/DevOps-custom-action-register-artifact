@@ -42,8 +42,6 @@ const axios = require('axios');
             'branchName': `${githubContext.ref_name}`
         };
         console.log("paylaod to register artifact: " + JSON.stringify(payload));
-        //console.debug("Debug log for register artifact");
-        core.debug("Debug log for register artifact using core");
     } catch (e) {
         core.setFailed(`Exception setting the payload to register artifact ${e}`);
         return;
@@ -65,9 +63,7 @@ const axios = require('axios');
             };
 
             httpHeaders = { headers: defaultHeadersForToken };
-            console.log("Before sending an api call for register artifact :"+JSON.stringify(payload));
             snowResponse = await axios.post(endpoint, JSON.stringify(payload), httpHeaders);
-            console.log("After getting an api call response for register artifact :"+JSON.stringify(snowResponse));
         }
         else if(username !== '' && password !== '') {
             endpoint = `${instanceUrl}/api/sn_devops/v1/devops/artifact/registration?orchestrationToolId=${toolId}`;
@@ -80,9 +76,7 @@ const axios = require('axios');
             };
 
             httpHeaders = { headers: defaultHeadersForBasicAuth };
-            console.log("Before sending an api call for register artifact :"+JSON.stringify(payload));
             snowResponse = await axios.post(endpoint, JSON.stringify(payload), httpHeaders);
-            console.log("After getting an api call response for register artifact :"+JSON.stringify(snowResponse));
         }
         else {
             core.setFailed("For Basic Auth, Username and Password is mandatory for integration user authentication");
